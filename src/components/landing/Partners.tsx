@@ -1,0 +1,1 @@
+// Removing this file as its functionality is covered by PartnersCarousel component

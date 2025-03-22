@@ -1,0 +1,191 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-dark: #2A2A2A;
+    --primary: #7C3AED;
+    --primary-light: #9B72E9;
+    --secondary-dark: #F5F5F5;
+    --secondary: #6366F1;
+    --secondary-light: #818CF8;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  /* Fix input text colors */
+  input, textarea, select {
+    @apply text-gray-900;
+  }
+
+  input::placeholder, textarea::placeholder {
+    @apply text-gray-500;
+  }
+}
+
+/* Responsive layout utilities */
+.responsive-container {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.responsive-grid {
+  @apply grid gap-4 sm:gap-6 lg:gap-8;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.responsive-flex {
+  @apply flex flex-col sm:flex-row;
+}
+
+/* Modal responsiveness */
+.modal-container {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 overflow-y-auto;
+}
+
+.modal-content {
+  @apply bg-white rounded-2xl w-full max-w-lg mx-auto my-8;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+}
+
+.modal-header {
+  @apply sticky top-0 bg-white p-6 border-b border-gray-100 flex justify-between items-center z-10;
+}
+
+.modal-body {
+  @apply p-6 space-y-6;
+}
+
+.modal-footer {
+  @apply sticky bottom-0 bg-white p-6 border-t border-gray-100 flex justify-end space-x-4 z-10;
+}
+
+/* Card responsiveness */
+.card {
+  @apply bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-200;
+}
+
+.card-header {
+  @apply p-6 border-b border-gray-100;
+}
+
+.card-body {
+  @apply p-6;
+}
+
+.card-footer {
+  @apply p-6 border-t border-gray-100;
+}
+
+/* Form responsiveness */
+.form-group {
+  @apply space-y-2;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+.form-input {
+  @apply w-full rounded-xl border-gray-200 focus:border-indigo-500 focus:ring-indigo-500;
+}
+
+/* Button responsiveness */
+.btn {
+  @apply px-4 py-2 rounded-lg transition-colors duration-200 flex items-center justify-center;
+}
+
+.btn-primary {
+  @apply bg-indigo-600 text-white hover:bg-indigo-700;
+}
+
+.btn-secondary {
+  @apply bg-gray-100 text-gray-700 hover:bg-gray-200;
+}
+
+/* Text responsiveness */
+.text-responsive {
+  @apply text-sm sm:text-base lg:text-lg;
+}
+
+.heading-responsive {
+  @apply text-xl sm:text-2xl lg:text-3xl font-bold;
+}
+
+/* Navigation responsiveness */
+.nav-link {
+  @apply px-3 py-2 rounded-lg transition-colors duration-200;
+}
+
+/* Animation utilities */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+    opacity: 0.9;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 1;
+  }
+  100% {
+    background-position: 0% 50%;
+    opacity: 0.9;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 4s ease infinite;
+  background-size: 200% 200%;
+  background-image: linear-gradient(
+    120deg,
+    rgba(124, 58, 237, 0.08) 0%,
+    rgba(99, 102, 241, 0.08) 50%,
+    rgba(124, 58, 237, 0.08) 100%
+  );
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full hover:bg-gray-400 transition-colors;
+}
+
+/* Media query utilities */
+@media (max-width: 640px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .hide-on-tablet {
+    display: none;
+  }
+}
+
+@media (min-width: 1025px) {
+  .hide-on-desktop {
+    display: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+}
