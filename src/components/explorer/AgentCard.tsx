@@ -14,6 +14,10 @@ export function AgentCard({ agent }: AgentCardProps) {
     alert('Partage du profil');
   };
 
+  console.log("Avatar URL:", agent.avatar);
+  console.log("Banner URL:", agent.banner);
+
+
   return (
     <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-200">
       <div className="relative h-48">

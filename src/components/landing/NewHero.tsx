@@ -1,6 +1,5 @@
-import React from 'react';
 import { NewNav } from './NewNav';
-import { ArrowRight } from 'lucide-react';
+import Logo from '../../assets/logo_small.png';
 
 interface NewHeroProps {
   onLogin?: () => void;
@@ -8,37 +7,42 @@ interface NewHeroProps {
 
 export function NewHero({ onLogin }: NewHeroProps) {
   return (
-    <div className="relative min-h-[85vh] bg-gradient-to-b from-white to-gray-50/50">
+    <div className="relative min-h-[65vh]">
       <NewNav onLogin={onLogin} />
-      <div className="relative pt-40 pb-16">
+      <div className="relative pt-52">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium bg-indigo-50 text-indigo-600 rounded-full">
-              L'espace pour
-            </span>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-10 leading-tight">
-              Gérez votre carrière et
-              <span className="block bg-gradient-to-r from-[#7C3AED] to-[#6D28D9] text-transparent bg-clip-text">
-                reconversion sportive
-              </span>
+
+          <div className="text-center max-w-5xl mx-auto">
+            <div className="mb-12 bg-emerald-50 border border-emerald-600 text-emerald-600 text-base font-semibold px-3 py-1 rounded-md flex items-center gap-1 mx-auto w-fit">
+              <span className=''>🎉 Nouvautés: Introduction de la page dashboard !</span>
+            </div>
+            
+            {/* <div className="flex justify-center items-center mb-8">
+              <img 
+                src={Logo} 
+                alt="Trophenix Logo" 
+                className="w-8 mr-4"
+              />
+              <div className="text-3xl font-bold text-gray-900">Trophenix</div>
+            </div> */}
+            
+            <h1 className="mb-6 text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900">
+              Briller durant et <span className="text-[#7C3AED]">après le sport</span>
             </h1>
-            <div className="relative inline-block mb-16">
-              <p className="text-xl sm:text-2xl text-gray-600 font-light tracking-wide">
-                Briller durant et après le sport
+            
+            <div className="mb-12 relative inline-block">
+              <p className="text-xl sm:text-2xl text-gray-500 font-sm tracking-wide">
+                Gérez votre carrière et votre reconversion sportive
               </p>
               <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-[#7C3AED]/0 via-[#7C3AED]/30 to-[#7C3AED]/0"></div>
             </div>
 
-            <div className="flex items-center max-w-lg mx-auto bg-white rounded-xl shadow-xl p-2">
-              <button className="flex-shrink-0 px-6 py-3 bg-gradient-to-r from-[#FF6B6B] to-[#FF8E53] text-white rounded-xl font-medium hover:from-[#FF5252] hover:to-[#FF7043] transition-all hover:-translate-y-0.5 flex items-center space-x-2">
-                <span>Lancez-vous</span>
-                <ArrowRight className="w-4 h-4" />
+            <div className="flex justify-center items-center mx-auto text-gray-900">
+              <button
+                className="flex items-center px-6 py-2.5 text-md font-semibold bg-[#514be5] text-white rounded-lg hover:bg-[#403bd1] transition-colors"
+              >
+                <span>Lancez-vous dans l'aventure Trophenix</span>
               </button>
-              <input
-                type="email"
-                placeholder="Entrez votre email"
-                className="flex-1 px-4 py-2 text-gray-600 placeholder-gray-400 bg-transparent border-none focus:outline-none focus:ring-0"
-              />
             </div>
           </div>
         </div>
