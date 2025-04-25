@@ -33,72 +33,75 @@ const PARTNERS = [
 
 export function PartnersCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollIntervalRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
     if (!scrollContainer) return;
 
-    // Clone the partners for seamless scrolling
+    // Clone the content
     const content = scrollContainer.innerHTML;
     scrollContainer.innerHTML = content + content;
 
-    // Calculate scroll speed based on content width
-    const scrollWidth = scrollContainer.scrollWidth;
-    const duration = scrollWidth * 20; // Adjust speed by changing this multiplier
+    const startScroll = () => {
+      scrollIntervalRef.current = setInterval(() => {
+        if (!scrollContainer) return;
+        
+        if (scrollContainer.scrollLeft >= (scrollContainer.scrollWidth / 2)) {
+          scrollContainer.scrollLeft = 0;
+        } else {
+          scrollContainer.scrollLeft += 1;
+        }
+      }, 50);
+    };
 
-    const scroll = () => {
-      if (!scrollContainer) return;
-
-      if (scrollContainer.scrollLeft >= scrollWidth / 2) {
-        scrollContainer.scrollLeft = 0;
-      } else {
-        scrollContainer.scrollLeft += 1;
+    const stopScroll = () => {
+      if (scrollIntervalRef.current) {
+        clearInterval(scrollIntervalRef.current);
       }
     };
 
-    const interval = setInterval(scroll, 20);
+    startScroll();
 
-    // Pause animation on hover
-    scrollContainer.addEventListener('mouseenter', () => clearInterval(interval));
-    scrollContainer.addEventListener('mouseleave', () => setInterval(scroll, 20));
+    const container = scrollContainer;
+    container.addEventListener('mouseenter', stopScroll);
+    container.addEventListener('mouseleave', startScroll);
 
-    return () => clearInterval(interval);
+    return () => {
+      stopScroll();
+      container.removeEventListener('mouseenter', stopScroll);
+      container.removeEventListener('mouseleave', startScroll);
+    };
   }, []);
 
   return (
-    <div className="w-full bg-white py-12 overflow-hidden">
+    <div className="w-full bg-gray-50 py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">
-          Nos partenaires
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          Nos Partenaires institutionnels
         </h2>
-        <p className="text-center text-gray-600 mb-8">
-          Ils nous font confiance pour accompagner les athlètes
-        </p>
         
         <div className="relative">
-          {/* Gradient masks for smooth fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
           
-          {/* Scrolling container */}
           <div 
             ref={scrollRef}
-            className="flex items-center space-x-12 overflow-hidden"
-            style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}
+            className="flex items-center gap-24 overflow-hidden py-8"
           >
             {PARTNERS.map((partner, index) => (
               <div 
                 key={index}
-                className="flex-shrink-0 group"
+                className="flex-shrink-0"
               >
-                <div className="relative w-32 h-32 rounded-xl overflow-hidden bg-gray-50 p-4 transition-all duration-300 hover:shadow-lg">
+                <div className="w-48 h-48 bg-white rounded-xl shadow-sm flex items-center justify-center">
                   <img
                     src={partner.logo}
                     alt={partner.name}
-                    className="w-full h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300 transform group-hover:scale-110"
+                    className="w-32 h-32 object-contain filter grayscale"
                   />
                 </div>
-                <p className="mt-2 text-sm text-center text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                <p className="mt-4 text-center text-gray-600 font-medium">
                   {partner.name}
                 </p>
               </div>

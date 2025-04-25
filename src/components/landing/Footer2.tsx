@@ -3,7 +3,6 @@ import { LucideIcon } from 'lucide-react';
 import { Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
 import Logo from '../../assets/logo_small.png';
 
-// Define types for footer links
 interface SocialLink {
   name: string;
   icon: LucideIcon;
@@ -54,30 +53,28 @@ export function Footer2(): React.JSX.Element {
   };
 
   return (
-    <footer className="bg-gray-50 border-t border-gray-200 py-16">
+    <footer className="bg-stone-100 border-t border-stone-300 py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:grid md:grid-cols-[2fr_1fr_1fr_1.2fr] gap-8 space-y-8 md:space-y-0">
-          {/* Logo and Description */}
           <div className="md:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <img 
-                src={Logo} 
-                alt="Trophenix Logo" 
+              <img
+                src={Logo}
+                alt="Trophenix Logo"
                 className="w-8 mr-1"
               />
               <div className="text-xl font-bold text-gray-900">
                 Trophenix
               </div>
             </div>
-            <p className="text-gray-500 max-w-xs">
+            <p className="text-stone-600 max-w-xs">
               Gérez votre carrière et votre reconversion sportive.
             </p>
           </div>
 
-          {/* Footer Links */}
           {footerLinks.map((section, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`md:col-span-1 ${index === footerLinks.length - 1 ? 'md:ml-18' : ''}`}
             >
               <h4 className="text-sm font-semibold text-gray-900 mb-4">
@@ -87,13 +84,13 @@ export function Footer2(): React.JSX.Element {
                 {section.links.map((link, linkIndex) => (
                   isSocialLink(link) ? (
                     <li key={linkIndex} className="flex items-center space-x-2">
-                      <a 
-                        href={link.href} 
-                        className="flex items-center text-gray-500 hover:text-[#514be5] transition-colors text-sm"
+                      <a
+                        href={link.href}
+                        className="flex items-center text-stone-600 hover:text-[#514be5] transition-colors text-sm"
                       >
-                        <link.icon 
-                          size={18} 
-                          color={link.color} 
+                        <link.icon
+                          size={18}
+                          color={link.color}
                           className="mr-2"
                         />
                         {link.name}
@@ -101,9 +98,9 @@ export function Footer2(): React.JSX.Element {
                     </li>
                   ) : (
                     <li key={linkIndex}>
-                      <a 
-                        href="#" 
-                        className="text-gray-500 hover:text-[#514be5] transition-colors text-sm"
+                      <a
+                        href="#"
+                        className="text-stone-600 hover:text-[#514be5] transition-colors text-sm"
                       >
                         {link}
                       </a>
@@ -115,9 +112,8 @@ export function Footer2(): React.JSX.Element {
           ))}
         </div>
 
-        {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-200 flex justify-center items-center">
-          <p className="text-sm text-gray-500">
+        <div className="mt-12 pt-8 border-t border-stone-300 flex justify-center items-center">
+          <p className="text-sm text-stone-600">
             © {currentYear} Trophenix. Tous droits réservés.
           </p>
         </div>

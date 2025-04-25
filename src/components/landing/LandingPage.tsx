@@ -3,7 +3,10 @@ import { Functionalities } from './Functionalities';
 import { ImagePresentation } from './ImagePresentation';
 import { Invitation } from './Invitation';
 import { NewHero } from './NewHero';
-import { UserTypes } from './UserType';
+import Partners from './Partners';
+import { TextPresentation } from './TextPresentation';
+import { UserTypes } from './UserTypes';
+
 
 interface LandingPageProps {
   onLogin?: () => void;
@@ -14,6 +17,8 @@ export function LandingPage({ onLogin }: LandingPageProps) {
     <div className="min-h-screen bg-white">
       <NewHero onLogin={onLogin} />
       <ImagePresentation/>
+      <Partners/>
+      <TextPresentation/>
       <UserTypes/>
       <Functionalities/>
       <Invitation/>

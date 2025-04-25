@@ -13,7 +13,7 @@ interface LandingPageProps {
 export function LandingPage({ onLogin, onSignup }: LandingPageProps) {
   return (
     <div className="min-h-screen bg-white">
-      <NewHero onGetStarted={onSignup} />
+      <NewHero />
       <NewApproach />
       <NewCreateAccount onGetStarted={onSignup} />
       <NewCTA onGetStarted={onSignup} />
